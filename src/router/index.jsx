@@ -4,9 +4,11 @@ import AuthLayout from "../layouts/AuthLayout";
 import MainLayout from "../layouts/MainLayout";
 import Login from "../views/Auth/Login";
 import Registration from "../views/Auth/Registration";
+import CategoryForm from "../views/Categories/CategoryForm";
+import CategoryPage from "../views/Categories";
 import PositionsPage from "../views/Positions";
 import PositionsFormPage from "../views/Positions/ProductsFormPage";
-import ProductUpdate from "../views/Positions/ProductUpdate/ProductUpdate";
+
 
 const Router = () => {
   const isAuth = useSelector((state) => state.auth.isAuth);
@@ -34,6 +36,8 @@ const Router = () => {
         <Route path="products/create" element={<PositionsFormPage />} />
         <Route path="products/:id" element={<PositionsFormPage />} />
         <Route path="menu" element={<>Menu</>} />
+        <Route path="category" element={<CategoryPage />} />
+        <Route path="category/create" element={<CategoryForm />} />
         <Route path="*" element={<Navigate to="products" />} />
       </Route>
       <Route path="*" element={<Navigate to="products" />} />

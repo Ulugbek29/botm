@@ -64,6 +64,7 @@ request.interceptors.request.use(
   (config) => {
     const token = store.getState().auth.token;
 
+    console.log(token)
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
       config.headers['platform-id'] ="7d4a4c38-dd84-4902-b744-0488b80a4c01";

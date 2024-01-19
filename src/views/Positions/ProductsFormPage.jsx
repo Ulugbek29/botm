@@ -65,7 +65,7 @@ const PositionsFormPage = () => {
 
 
   useEffect(() => {
-    fetchData()
+     fetchData()
   }, [])
 
 

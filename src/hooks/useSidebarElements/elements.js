@@ -43,14 +43,6 @@ export const elements = [
     title: "category",
     path: "/category",
     icon: CategoryIcon,
-    children: [
-      {
-        id: "childPage",
-        title: "childPage",
-        path: "/positions/create",
-        icon: Widgets,
-      },
-    ],
   },
   {
     id: "orders",
