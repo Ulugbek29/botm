@@ -5,6 +5,7 @@ import CancelButton from "../../components/Buttons/CancelButton";
 import SaveButton from "../../components/Buttons/SaveButton";
 import CBreadcrumbs from "../../components/CBreadcrumbs";
 import Header from "../../components/Header";
+import CategoryService from "../../services/categoryServices";
 import CategoryCreate from "./CategoryCreate/CategoryCreate";
 import CategoryUpdate from "./CategoryUpdate/CategoryUpdate";
 
@@ -25,7 +26,36 @@ export default function CategoryForm() {
 
   const onSubmit = (value) => {
     console.log(value);
+
+    const data ={
+      ...value,
+    }
+
+    if(id) return updateCategory(data)
+    createCategory(data)
   };
+
+
+  // Create new category
+  const createCategory = (data) => {
+    CategoryService.create(data)
+    .then(res => console.log("Values", res))
+    .catch(err => console.log(err))
+  }
+
+
+
+  // Update new Category
+
+  const updateCategory = (data) => {
+    CategoryService.update({
+      ...data,
+      id
+    })
+    .then(res => console.log(res))
+    .catch(err => console.log(err))
+  }
+
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -43,11 +73,10 @@ export default function CategoryForm() {
         <CBreadcrumbs withDefautlIcon items={breadCrumbItems} />
       </Header>
 
-        {id ? <CategoryUpdate /> 
-        : <CategoryCreate />}
+        {id ? <CategoryUpdate control={control}/> 
+        : <CategoryCreate control={control}/>}
         
 
-      <CategoryCreate />
     </form>
   );
 }
